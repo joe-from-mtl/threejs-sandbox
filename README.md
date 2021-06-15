@@ -1,2 +1,2 @@
 # threejs-sandpit
-A collection of threejs examples and tests
+A collection of threejs examples, tutorials, projects, and tests.
