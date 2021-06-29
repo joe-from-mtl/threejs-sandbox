@@ -6,13 +6,13 @@
     <style>
         body { margin: 0; }
     </style>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"
-            integrity="sha512-dLxUelApnYxpLt6K2iomGngnHO83iUvZytA3YjDUCjT0HDOHKXnVYdf3hU4JjM8uEhxf9nD1/ey98U3t2vZ0qQ=="
-            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </head>
 <body>
 
-<script>
+<script type="module">
+    import * as THREE from 'https://cdn.skypack.dev/three@0.129.0'
+    import { OrbitControls } from 'https://cdn.skypack.dev/three@0.129.0/examples/jsm/controls/OrbitControls.js'
+
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000 );
 
@@ -58,9 +58,9 @@
         [ 0.64206867,  0.36869774, -0.67216799]];
 
     // Add lines to represent each vector
-    color = new THREE.Color();
+    const color = new THREE.Color();
     color.setRGB(0.5,0.5,0.5);
-    lineMaterial = new THREE.LineBasicMaterial({color: color, linewidth: 5})
+    const lineMaterial = new THREE.LineBasicMaterial({color: color, linewidth: 5})
 
     const vertices = [];
     for (let i = 0; i < bvecs.length; i++){
@@ -93,14 +93,20 @@
     spotLight.target = sphere;
 
     scene.add(ambientLight);
-    scene.add(spotLight)
+    camera.add(spotLight)
+    scene.add(camera);
+
+    // Creating the orbit control
+    const controls = new OrbitControls( camera, renderer.domElement );
+    controls.update()
 
     const animate = function () {
         requestAnimationFrame( animate );
 
-        construct.rotation.x += 0.01;
-        construct.rotation.y += 0.01;
+        construct.rotation.x += 0.005;
+        construct.rotation.y += 0.005;
 
+        controls.update()
         renderer.render( scene, camera );
     };
     animate();
