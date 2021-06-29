@@ -1,13 +1,19 @@
 ---
-title: Bvecs Viewer Demo
+title: (2021-06-29) Demo : Bvecs Viewer
 layout: default
 ---
 <style>
-    #canvas {height:80%; width:80%;}
+    #canvas {height:100%; width:100%;}
 </style>
 <body>
 
 <h1>Demo : Bvecs Viewer</h1>
+This is an example of 15 bvecs orientation generated for a single shell with a weight=1. These points were generated using an electrostatic repulsion model to get a uniform angular coverage (see <a href="https://github.com/scilus/scilpy/blob/1992ca673492c0fbc9bde60a2e079949705c8d52/scilpy/gradientsampling/multiple_shell_energy.py#L185">GitHub/scilpy</a> for more details about the implementation. This is based on the following paper :
+
+<ul>
+    <li>E. Caruyer et al., "Design of multishell sampling schemes with uniform coverage in diffusion MRI", <em>Magn. Reson. Med.</em> 69(6), 1534-1540 (2013), <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5381389/">URL</a>.</li>
+</ul>
+
 <canvas id="canvas"></canvas>
 <script type="module" src="assets/js/2021-06-29-demo-bvecs-viewer.js"></script>
 
